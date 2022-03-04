@@ -1,0 +1,33 @@
+{
+  "samples": [
+    {
+      "collectionDate" : "2021-01-01T00:00:00Z",
+      "sampleTypeId" : "Whole Blood",
+      "subjectId": 1
+    },
+    {
+      "collectionDate" : "2021-03-01T00:00:00Z",
+      "sampleTypeId" : "Plasma",
+      "subjectId": 1
+    },
+    {
+      "collectionDate" : "2021-04-01T00:00:00Z",
+      "sampleTypeId" : "DNA",
+      "subjectId": 1
+    }
+  ],
+  "accessionSamples": [
+    {
+      "collectionDate" : "2021-03-01T00:00:00Z",
+      "sampleTypeId" : "Plasma",
+      "externalSubjectId": "ext-1",
+      "user": "test"
+    },
+    {
+      "collectionDate" : "2021-03-01T00:00:00Z",
+      "sampleTypeId" : "Blood",
+      "externalSubjectId": "ext-1",
+      "user": "test"
+    }
+  ]
+}

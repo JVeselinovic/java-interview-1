@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: io.delfidx
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [ annotation-api, app-name, assertj, data, data-jdbc, gradle, hibernate-validator, http-client, java, java-application, jdbc-hikari, jib, junit, kubernetes, logback, management, micronaut-build, mockito, netty-server, openapi, readme, security, security-annotations, security-jwt, serialization-jackson, shade, sqlserver, testcontainers, tracing-jaeger, yaml ]

@@ -1,0 +1,4 @@
+config:
+  aws:region: us-west-2
+  sample-service:ECR_REPO: 016272216798.dkr.ecr.us-west-2.amazonaws.com/lis/sample-service
+  sample-service:IMAGE_TAG: alpha-0.2

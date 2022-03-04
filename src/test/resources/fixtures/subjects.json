@@ -1,0 +1,13 @@
+{
+  "subjects": [
+    {
+      "externalId": "sub1"
+    },
+    {
+      "externalId": "sub2"
+    },
+    {
+      "externalId": "sub3"
+    }
+  ]
+}

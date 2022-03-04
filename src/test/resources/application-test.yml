@@ -1,0 +1,16 @@
+datasources:
+  default:
+    url: jdbc:tc:postgresql:12:///postgres
+    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+
+tracing:
+  jaeger:
+    enabled: false
+test:
+  validToken: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZXS0FXR3ZpMVJHc0dDRWd4QllyRiJ9.eyJpc3MiOiJodHRwczovL2Rldi0zZXM4bTlpZi51cy5hdXRoMC5jb20vIiwic3ViIjoiTTJYcmg0b0lXSDFydkRFUWxBbU1vZnhSNnZjSkFqWGRAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vdGVzdCIsImlhdCI6MTY0Mzk1MjgxMSwiZXhwIjoxNjQ2NTQ0ODExLCJhenAiOiJNMlhyaDRvSVdIMXJ2REVRbEFtTW9meFI2dmNKQWpYZCIsInNjb3BlIjoicmVhZDp0ZXN0IiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwicGVybWlzc2lvbnMiOlsicmVhZDp0ZXN0Il19.olQ8kwhA-cFrtZVd8BojQfGsfTW5D1PL5HyAa15Qe1yn5sTAGhTL378kxp4M3vOPbjelT1y1JkNLGjx3n-thpIjKsJERouVfzwugcH0AT7LjONq5Md77RyHs_EEJZKzXxmco6TKMnsnrM5TqSjaJGcjmrE8gwG9Ph-3DnCalgSTwl0LABKTH6RwLIFuMkhVdvP5kyMqUR6U-hq9mFw8Gl5CXhZV1Ro-BNXVxSfXPK-9Lc7H_QAvsMO66v1TTggzPKEsSkVvI5sXqcaVfJdc47sPNj49QAu7zFvofIxTpa2iBNvfkZ-XB9WDF_NU6cmsMce3jvnzRtEFm7KK9kqD7vQ"
+
+service-utils:
+  pagination:
+    default:
+      default-page-size: 10
+      max-allowed-page-size: 100

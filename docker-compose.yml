@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "db_password"
+      POSTGRES_USER: "db_user"
+      POSTGRES_DB: "app_db"
+    networks:
+      - backend
+networks:
+  backend:
+    driver: "bridge"

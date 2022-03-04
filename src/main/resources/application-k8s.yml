@@ -1,0 +1,16 @@
+micronaut:
+  security:
+    enabled: false
+datasources:
+  default:
+    url: jdbc:sqlserver://lv-lims-dev-db1.cbbt8euezn6e.us-west-2.rds.amazonaws.com:1433;databaseName=labvantage
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    dialect: SQL_SERVER
+    username: labvantage
+    password: Fungi88Ion
+
+# we dont need migrations in test/stg/prod as we will connect to the existing Labvantage db
+liquibase:
+  datasources:
+    default:
+      enabled: false
