@@ -59,8 +59,8 @@ application {
     mainClass.set("io.delfidx.Application")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("17")
-    targetCompatibility = JavaVersion.toVersion("17")
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
 }
 // ---- custom test, and build info tasks/overrides
 compileJava {

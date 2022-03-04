@@ -41,19 +41,19 @@ public class SampleFeature {
         for(AccessionSample accessionSample: accessionSamples) {
             Subject subject = new Subject();
             subject.setModDt(Instant.now());
-            subject.setModBy(accessionSample.user());
+            subject.setModBy(accessionSample.getUser());
             subject.setCreateDt(Instant.now());
-            subject.setCreateBy(accessionSample.user());
-            subject.setExternalId(accessionSample.externalSubjectId());
+            subject.setCreateBy(accessionSample.getUser());
+            subject.setExternalId(accessionSample.getExternalSubjectId());
             Subject saved = subjectRepo.save(subject);
 
             Sample sample = new Sample();
-            sample.setSampleTypeId(accessionSample.sampleType());
-            sample.setCollectionDate(accessionSample.collectionDate());
+            sample.setSampleTypeId(accessionSample.getSampleType());
+            sample.setCollectionDate(accessionSample.getCollectionDate());
             sample.setCreateDt(Instant.now());
-            sample.setCreateBy(accessionSample.user());
+            sample.setCreateBy(accessionSample.getUser());
             sample.setModDt(Instant.now());
-            sample.setModBy(accessionSample.user());
+            sample.setModBy(accessionSample.getUser());
             sample.setSubjectId(saved.getId());
             Sample savedSample = sampleRepo.save(sample);
             samples.add(savedSample);

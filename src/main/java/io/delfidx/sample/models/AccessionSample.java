@@ -2,10 +2,16 @@ package io.delfidx.sample.models;
 
 import java.time.Instant;
 
-public record AccessionSample(
-        String sampleType,
-        String externalSubjectId,
-        Instant collectionDate,
-        String user
-) {
+import lombok.*;
+import java.time.Instant;
+
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+public class AccessionSample {
+    private String sampleType;
+    private String externalSubjectId;
+    private Instant collectionDate;
+    private String user;
 }

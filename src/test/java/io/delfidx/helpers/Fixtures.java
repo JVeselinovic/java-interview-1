@@ -20,6 +20,7 @@ import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Requires(env = Environment.TEST)
 @Singleton
@@ -67,7 +68,7 @@ public class Fixtures {
                     s.setCreateDt(Instant.now());
                     s.setModDt(Instant.now());
                 })
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public List<Sample> loadSamples(String key) throws JsonProcessingException {
@@ -79,7 +80,7 @@ public class Fixtures {
                     s.setCreateDt(Instant.now());
                     s.setModDt(Instant.now());
                 })
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public List<AccessionSample> loadAccessionSamples(String key) throws JsonProcessingException {

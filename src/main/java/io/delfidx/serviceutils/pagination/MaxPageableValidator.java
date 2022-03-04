@@ -36,7 +36,7 @@ public class MaxPageableValidator implements ConstraintValidator<MaxPageable, Pa
                 && value.getSize() <= maxValue;
         if (!isValid) {
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate("Cannot exceed maximum page size: %s".formatted(maxValue))
+            context.buildConstraintViolationWithTemplate(String.format("Cannot exceed maximum page size: %s", maxValue))
                             .addConstraintViolation();
         }
         return isValid;
