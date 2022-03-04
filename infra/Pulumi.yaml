@@ -1,3 +1,0 @@
-name: sample-service
-runtime: nodejs
-description: Deploy service to Kubernetes
