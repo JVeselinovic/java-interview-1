@@ -19,8 +19,8 @@ of this exercise it has been simplified to support the following functionality:
 ## Schema
 The database is in Postgres and there are only two tables in the database. 
 ```mermaid
-erDiagram
-Subject |--|{ Sample : has  
+graph LR;
+	Subject -- has 1 or more --> Sample
 ```
 A `Subject` has 1 or more `Sample`s. `Subject` has the following properties:
 * id: numeric (primary key)
@@ -54,17 +54,23 @@ Each domain contains:
 
 ```mermaid
 flowchart LR;
-User((User)) --|Auth|--> Auth[Auth]
-User((User)) <-.|JWT Token|.- Auth[Auth]
-subgraph service
-User((User)) --|GET. Authorization: Bearer JWT Token|--> Ctrl[Controller]
-Ctrl[Controller] --|Verifies token|--> Auth[Auth]
-Ctrl[Controller] --> Ft[Feature]
-Ft[Feature] --> Repo[Repository]
-end
-Repo[Repository] --> DB[(DB)]
-Ctrl[Controller] --> User((User))
-style Ft stroke:#333,stroke-width:4px
+	subgraph Auth
+	A[Auth0]
+	end
+	subgraph service
+	Ctrl[Controller]
+	Ft[Feature]
+	Repo[Repository]
+	end
+	U((User)) -- Authenticate --> A[Auth0]
+	U((User)) <-. JWT Token .- A[Auth0]
+	U((User)) -- GET Authorization: Bearer JWT Token --> Ctrl[Controller]
+	Ctrl[Controller] -- Verifies token --> A[Auth0]
+	Ctrl[Controller] --> Ft[Feature]
+	Ft[Feature] --> Repo[Repository]
+	Repo[Repository] --> d[(DB)]
+	Ctrl[Controller] .-> U((User))
+
 ```
 ### Flow
 Here is the standard user flow for accessing the service. 
