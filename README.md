@@ -53,7 +53,7 @@ Each domain contains:
 * One or more controller classes that expose the REST endpoints and enforce authorization rules
 
 ```mermaid
-graph LR;
+flowchart LR;
 User((User)) --|Auth|--> Auth[Auth]
 User((User)) <-.|JWT Token|.- Auth[Auth]
 subgraph service
