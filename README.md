@@ -54,13 +54,12 @@ Each domain contains:
 
 ```mermaid
 flowchart LR;
-	U((User)) -- 1. Authenticate --> A[Auth0]
-	U((User)) <-. 2. JWT Token .- A[Auth0]
-	U((User)) -- 3. GET w/ Bearer jwt token ---> Ctrl[Controller]
-	Ctrl[Controller] -- 4. Verifies token ---> A[Auth0]
-	Ctrl[Controller] -- 5 --> Ft[Feature] .-> |10| Ctrl[Controller]
-	Ft[Feature] -- 6 --> Repo[Repository]
-	Repo[Repository] -- 7. JPA --> d[(DB)]
+	U((User)) --> |1. Authenticate| A[Auth0] .-> |2. JWT Token| U((User))
+	U((User)) --> |3. GET w/ Bearer jwt token| Ctrl[Controller]
+	Ctrl[Controller] ---> |4. Verifies token| A[Auth0]
+	Ctrl[Controller] --> |5| Ft[Feature] .-> |10| Ctrl[Controller]
+	Ft[Feature] --> |6| Repo[Repository]
+	Repo[Repository] --> |7. JPA| d[(DB)]
 	d[(DB)] .-> |8| Repo[Repository]
 	Repo[Repository] .-> |9| Ft[Feature]
 	Ctrl[Controller] ..->|11| U((User))
@@ -76,7 +75,7 @@ present in the JWT token. The `Controller` deserializes the request and calls th
 all the business logic. `Feature` class uses the `Repository` class to interact with the database and returns any results back 
 to the `User` via the `Controller`.
 
-## Exercise
+## Explain the exercise
 ### Fix test
 In this exercise we will fix a broken test
 ### Add a feature (Optional)
