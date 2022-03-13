@@ -54,22 +54,17 @@ Each domain contains:
 
 ```mermaid
 flowchart LR;
-	subgraph Auth
-	A[Auth0]
-	end
-	subgraph service
-	Ctrl[Controller]
-	Ft[Feature]
-	Repo[Repository]
-	end
-	U((User)) -- Authenticate --> A[Auth0]
-	U((User)) <-. JWT Token .- A[Auth0]
-	U((User)) -- GET Authorization: Bearer JWT Token --> Ctrl[Controller]
-	Ctrl[Controller] -- Verifies token --> A[Auth0]
-	Ctrl[Controller] --> Ft[Feature]
-	Ft[Feature] --> Repo[Repository]
-	Repo[Repository] --> d[(DB)]
-	Ctrl[Controller] .-> U((User))
+	U((User)) -- 1. Authenticate --> A[Auth0]
+	U((User)) <-. 2. JWT Token .- A[Auth0]
+	U((User)) -- 3. GET w/ Bearer jwt token ---> Ctrl[Controller]
+	Ctrl[Controller] -- 4. Verifies token ---> A[Auth0]
+	Ctrl[Controller] -- 5 --> Ft[Feature] .-> |10| Ctrl[Controller]
+	Ft[Feature] -- 6 --> Repo[Repository]
+	Repo[Repository] -- 7. JPA --> d[(DB)]
+	d[(DB)] .-> |8| Repo[Repository]
+	Repo[Repository] .-> |9| Ft[Feature]
+	Ctrl[Controller] ..->|11| U((User))
+	style Ft stroke:#333,stroke-width:4px
 
 ```
 ### Flow
