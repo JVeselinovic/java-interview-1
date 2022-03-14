@@ -75,7 +75,7 @@ present in the JWT token. The `Controller` deserializes the request and calls th
 all the business logic. `Feature` class uses the `Repository` class to interact with the database and returns any results back 
 to the `User` via the `Controller`.
 
-## Explain the exercise
+## Exercise
 ### Fix test
 In this exercise we will fix a broken test
 ### Add a feature (Optional)
