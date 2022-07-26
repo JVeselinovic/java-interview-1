@@ -42,7 +42,7 @@ A `Subject` has 1 or more `Sample`s. `Subject` has the following properties:
  
 ## System Architecture
 The system is built-in on [Micronaut](https://micronaut.io/) framework. The system borrows principles from Domain-Driven Design 
-an as such is structured along its two main domain models:
+and as such is structured along its two main domain models:
 * sample
 * subject
 

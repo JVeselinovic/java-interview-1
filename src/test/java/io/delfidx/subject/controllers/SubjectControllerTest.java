@@ -21,7 +21,6 @@ import jakarta.inject.Inject;
 import org.junit.jupiter.api.*;
 
 import java.net.URI;
-import java.time.Instant;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -127,7 +126,7 @@ class SubjectControllerTest extends WithMockedToken {
     }
 
     @Test
-    void should_get_specimens_by_subject_external_id() throws JsonProcessingException {
+    void should_get_subjects_by_subject_external_id() throws JsonProcessingException {
         List<AccessionSample> accessionSamples = fixtures.loadAccessionSamples("accessionSamples");
         List<Sample> samples = sampleFeature.accessionSamples(accessionSamples);
         assertEquals(accessionSamples.size(), samples.size());
