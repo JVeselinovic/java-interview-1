@@ -83,6 +83,16 @@ compileJava {
 }
 test {
     finalizedBy jacocoTestReport // report is always generated after tests run
+    testLogging {
+        events "passed", "skipped", "failed" //, "standardOut", "standardError"
+
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces true
+
+        showStandardStreams = false
+    }
 }
 
 jacocoTestReport {
