@@ -44,7 +44,6 @@ public class SampleFeature {
             subject.setModBy(accessionSample.getUser());
             subject.setCreateDt(Instant.now());
             subject.setCreateBy(accessionSample.getUser());
-            subject.setExternalId(accessionSample.getExternalSubjectId());
             Subject saved = subjectRepo.save(subject);
 
             Sample sample = new Sample();

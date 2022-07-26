@@ -136,6 +136,6 @@ class SubjectControllerTest extends WithMockedToken {
         HttpRequest<?> request = HttpRequest.GET(uri).bearerAuth(validToken);
         List<Subject> response = client.toBlocking().retrieve(request, Argument.of(List.class, Argument.of(Subject.class)));
         assertNotNull(response);
-        assertEquals(1, response.size());
+        assertEquals(2, response.size());
     }
 }
