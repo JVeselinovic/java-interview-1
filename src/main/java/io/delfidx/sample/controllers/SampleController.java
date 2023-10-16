@@ -1,14 +1,17 @@
 package io.delfidx.sample.controllers;
 
 import io.delfidx.sample.features.SampleFeature;
+import io.delfidx.sample.models.AccessionSample;
 import io.delfidx.sample.models.PageableSample;
 import io.delfidx.sample.models.Sample;
 import io.delfidx.serviceutils.pagination.MaxPageable;
 import io.delfidx.serviceutils.pagination.Pagination;
 import io.micronaut.data.model.Page;
 import io.micronaut.data.model.Pageable;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.QueryValue;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -21,9 +24,12 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Named;
 
 import javax.validation.constraints.NotNull;
+
+import java.util.List;
 import java.util.Optional;
 
 import static io.delfidx.common.Roles.SAMPLE_READ;
+import static io.delfidx.common.Roles.SAMPLE_WRITE;
 
 @Controller("/samples")
 @Tag(name = "Sample", description = "Sample service")
@@ -61,5 +67,11 @@ public class SampleController {
     @Get("/{id}")
     public Sample sample(@NotNull long id) {
         return sampleFeature.findById(id).orElse(null);
+    }
+
+    @RolesAllowed({SAMPLE_READ, SAMPLE_WRITE})
+    @Post("/accession-samples")
+    public List<Sample> accessionSamples(@Body List<AccessionSample> accessionSamples){
+        return sampleFeature.accessionSamples(accessionSamples);
     }
 }

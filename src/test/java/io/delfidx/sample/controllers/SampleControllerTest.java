@@ -8,6 +8,7 @@ import io.delfidx.sample.features.SampleFeature;
 import io.delfidx.sample.models.AccessionSample;
 import io.delfidx.sample.models.Sample;
 import io.delfidx.sample.repositories.SampleRepo;
+import io.micronaut.core.type.Argument;
 import io.micronaut.data.model.Page;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpStatus;
@@ -20,7 +21,6 @@ import jakarta.inject.Inject;
 import org.junit.jupiter.api.*;
 
 import java.net.URI;
-import java.time.Instant;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,6 +40,9 @@ class SampleControllerTest extends WithMockedToken {
     SampleRepo sampleRepo;
     List<Sample> samples;
     int numSamples;
+
+    @Inject
+    SampleFeature sampleFeature;
 
     @BeforeEach
     void setUp() {
@@ -132,5 +135,17 @@ class SampleControllerTest extends WithMockedToken {
         Sample response = client.toBlocking().retrieve(req, Sample.class);
         assertNotNull(response);
         assertEquals(1, response.getId());
+    }
+
+     @Test
+    void should_return_a_list_of_samples_for_accession_samples() throws JsonProcessingException {
+        List<AccessionSample> accessionSamples = fixtures.loadAccessionSamples("accessionSamples");
+      
+        URI uri = UriBuilder.of("").path("accession-samples")
+                .build();
+        HttpRequest<?> request = HttpRequest.POST(uri,accessionSamples).bearerAuth(validToken);
+        List<Sample> response = client.toBlocking().retrieve(request, Argument.of(List.class, Argument.of(Sample.class)));
+        assertNotNull(response);
+        assertEquals(2, response.size());
     }
 }
